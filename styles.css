@@ -1,12 +1,15 @@
-/* ROCLA Collection — design tokens (WEBSITE_PLAN.md §3) */
+/* ROCLA Collection — tokens from the founders' style guide:
+   pale warm paper, elegant serif with italics, hairline rules,
+   logo burgundy reserved for key accents (prices, links, CTA). */
 :root {
-  --burgundy: #8a3a4a;
-  --burgundy-dark: #6f2e3c;
-  --bg: #faf6f1;
-  --text: #1a1a1a;
-  --muted: #8c8480;
-  --serif: "Playfair Display", Georgia, serif;
-  --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+  --wine: #8a3a4a;
+  --wine-dark: #6f2e3c;
+  --bg: #f7f4f1;
+  --bg-alt: #f0ebe6;
+  --text: #35312e;
+  --muted: #8f8781;
+  --hairline: rgba(53, 49, 46, 0.25);
+  --serif: "Cormorant Garamond", Georgia, serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -14,23 +17,34 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: var(--sans);
-  font-weight: 300;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.1rem;
   color: var(--text);
   background: var(--bg);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 img { max-width: 100%; display: block; }
 
-h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
+h1, h2, h3 { font-weight: 500; }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.9rem;
   text-align: center;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+/* hairline rule under section titles, like the style guide wordmark */
+h2::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 1px;
+  background: var(--hairline);
+  margin: 0.9rem auto 0;
 }
 
 /* ---------- Header ---------- */
@@ -42,22 +56,23 @@ h2 {
   align-items: center;
   justify-content: space-between;
   padding: 0.9rem 1.25rem;
-  background: rgba(250, 246, 241, 0.92);
+  background: rgba(247, 244, 241, 0.94);
   backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(140, 132, 128, 0.18);
+  border-bottom: 1px solid var(--hairline);
 }
 
 .brand {
   font-family: var(--serif);
-  font-size: 1.35rem;
-  letter-spacing: 0.35em;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.38em;
   text-decoration: none;
   color: var(--text);
 }
 
 .site-nav a {
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--text);
@@ -65,7 +80,7 @@ h2 {
   transition: color 0.2s;
 }
 
-.site-nav a:hover, .site-nav a:focus { color: var(--burgundy); }
+.site-nav a:hover, .site-nav a:focus { color: var(--wine); }
 
 .nav-toggle {
   display: none;
@@ -78,144 +93,111 @@ h2 {
 .nav-toggle span {
   display: block;
   width: 22px;
-  height: 2px;
+  height: 1px;
   background: var(--text);
-  margin: 5px 0;
-  transition: transform 0.25s;
+  margin: 6px 0;
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero (looping video backdrop) ---------- */
 .hero {
-  min-height: 82vh;
+  position: relative;
+  min-height: 88vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 3rem 1.5rem;
+  overflow: hidden;
 }
 
-.hero-logo {
-  width: 190px;
-  height: 190px;
-  border-radius: 50%;
-  box-shadow: 0 12px 40px rgba(138, 58, 74, 0.25);
-  margin-bottom: 2rem;
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* pale wash so the type stays readable over the footage */
+.hero-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(247, 244, 241, 0.88),
+    rgba(247, 244, 241, 0.66) 45%,
+    rgba(247, 244, 241, 0.88)
+  );
+  z-index: 1;
+}
+
+.hero > :not(.hero-video):not(.hero-veil) { position: relative; z-index: 2; }
+
+.hero-wordmark {
+  font-size: clamp(3rem, 10vw, 4.8rem);
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  margin-right: -0.32em; /* optical centering of tracked caps */
+}
+
+.hero-rule {
+  width: 110px;
+  height: 1px;
+  background: var(--hairline);
+  border: none;
+  margin: 1.2rem auto 1.6rem;
 }
 
 .hero-tagline {
-  font-family: var(--serif);
   font-style: italic;
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   line-height: 1.5;
-  max-width: 34ch;
+  max-width: 36ch;
   margin-bottom: 0.6rem;
 }
 
 .hero-sub {
   color: var(--muted);
-  letter-spacing: 0.25em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-size: 0.8rem;
-  margin-bottom: 2.2rem;
+  font-size: 0.85rem;
+  margin-bottom: 2.4rem;
 }
 
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-block;
-  background: var(--burgundy);
-  color: #fff;
+  background: var(--wine);
+  color: #fdfbfa;
   text-decoration: none;
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
+  font-size: 0.95rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  padding: 0.9rem 2.2rem;
-  border-radius: 2rem;
-  transition: background 0.2s;
+  padding: 0.85rem 2.4rem;
+  border: 1px solid var(--wine);
+  transition: background 0.2s, color 0.2s;
 }
 
-.btn:hover, .btn:focus { background: var(--burgundy-dark); }
+.btn:hover, .btn:focus { background: var(--wine-dark); border-color: var(--wine-dark); }
 
-.btn-outline {
-  background: transparent;
-  color: var(--burgundy);
-  border: 1px solid var(--burgundy);
-}
+.btn-outline { background: transparent; color: var(--wine); }
 
-.btn-outline:hover, .btn-outline:focus { background: var(--burgundy); color: #fff; }
+.btn-outline:hover, .btn-outline:focus { background: var(--wine); color: #fdfbfa; }
 
 /* ---------- Sections ---------- */
 .section { padding: 4.5rem 1.25rem; max-width: 1080px; margin: 0 auto; }
 
-.section-alt {
-  max-width: none;
-  background: #f3ece4;
-}
+.section-alt { max-width: none; background: var(--bg-alt); }
 
 .section-alt > * { max-width: 1080px; margin-left: auto; margin-right: auto; }
 
 .section-intro {
   text-align: center;
+  font-style: italic;
+  font-size: 1.15rem;
   color: var(--muted);
   margin-bottom: 2.5rem;
-}
-
-/* ---------- Collection grid ---------- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem 1.5rem;
-}
-
-.card { text-align: center; }
-
-.card-photo {
-  display: block;
-  width: 100%;
-  border: none;
-  padding: 0;
-  cursor: zoom-in;
-  background: none;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.card-photo img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.card-photo:hover img, .card-photo:focus img { transform: scale(1.03); }
-
-.card h3 {
-  font-size: 1.15rem;
-  margin: 1rem 0 0.25rem;
-  letter-spacing: 0.05em;
-}
-
-.card p { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.75rem; }
-
-.pedir {
-  display: inline-block;
-  color: var(--burgundy);
-  text-decoration: none;
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--burgundy);
-  padding-bottom: 2px;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.pedir:hover, .pedir:focus { color: var(--burgundy-dark); border-color: var(--burgundy-dark); }
-
-.grid-note {
-  text-align: center;
-  color: var(--muted);
-  font-style: italic;
-  margin-top: 2.5rem;
 }
 
 /* ---------- Carousel (portada) ---------- */
@@ -251,78 +233,139 @@ h2 {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: 4px;
+  object-position: top;
   transition: transform 0.4s ease;
 }
 
-.slide:hover img, .slide:focus img { transform: scale(1.03); }
+.slide:hover img, .slide:focus img { transform: scale(1.02); }
 
 .slide h3 {
-  font-size: 1.3rem;
-  letter-spacing: 0.15em;
+  font-size: 1.35rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-top: 1rem;
+  margin-top: 1.1rem;
 }
 
-.slide-price { color: var(--muted); font-size: 0.9rem; }
+.slide-price { font-style: italic; color: var(--wine); font-size: 1.05rem; }
 
 .carousel-arrow {
   flex: 0 0 auto;
   background: none;
-  border: 1px solid var(--burgundy);
-  color: var(--burgundy);
+  border: 1px solid var(--hairline);
+  color: var(--text);
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 50%;
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: border-color 0.2s, color 0.2s;
 }
 
-.carousel-arrow:hover, .carousel-arrow:focus { background: var(--burgundy); color: #fff; }
+.carousel-arrow:hover, .carousel-arrow:focus { border-color: var(--wine); color: var(--wine); }
 
 /* ---------- Collection page ---------- */
 .page-head { padding-bottom: 0.5rem; }
 
 .page-title {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   text-align: center;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.page-title::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 1px;
+  background: var(--hairline);
+  margin: 0.9rem auto 0;
 }
 
 .linea { padding-top: 2.5rem; padding-bottom: 2.5rem; }
 
 .linea h2 { font-size: 1.5rem; }
 
-.price { color: var(--text); font-weight: 400; margin-bottom: 0.75rem; }
+.price { font-style: italic; color: var(--wine); font-size: 1.1rem; margin-bottom: 0.7rem; }
 
 .text-link {
-  color: var(--burgundy);
+  color: var(--wine);
   text-decoration: none;
-  border-bottom: 1px solid var(--burgundy);
+  border-bottom: 1px solid var(--wine);
   padding-bottom: 1px;
 }
 
-.text-link:hover, .text-link:focus { color: var(--burgundy-dark); border-color: var(--burgundy-dark); }
+.text-link:hover, .text-link:focus { color: var(--wine-dark); border-color: var(--wine-dark); }
+
+/* ---------- Product grid ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2.5rem 1.5rem;
+}
+
+.card { text-align: center; }
+
+.card-photo {
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 0;
+  cursor: zoom-in;
+  background: none;
+  overflow: hidden;
+}
+
+.card-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.4s ease;
+}
+
+.card-photo:hover img, .card-photo:focus img { transform: scale(1.02); }
+
+.card h3 {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin: 1rem 0 0.15rem;
+}
+
+.pedir {
+  display: inline-block;
+  color: var(--wine);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--wine);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.pedir:hover, .pedir:focus { color: var(--wine-dark); border-color: var(--wine-dark); }
+
+.grid-note {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 1.1rem;
+  margin: 2.5rem auto;
+  padding: 0 1.25rem;
+}
 
 /* ---------- Nosotras ---------- */
-.nosotras-inner {
-  max-width: 560px;
-  text-align: center;
-}
+.nosotras-inner { max-width: 580px; text-align: center; }
 
 .nosotras-inner p { margin-bottom: 1.2rem; }
 
-.nosotras-inner .lead {
-  font-family: var(--serif);
-  font-size: 1.3rem;
-  line-height: 1.5;
-}
+.nosotras-inner .lead { font-size: 1.45rem; font-style: italic; line-height: 1.5; }
 
-.heart { color: var(--burgundy); }
+.heart { color: var(--wine); }
 
 /* ---------- Steps ---------- */
 .steps {
@@ -341,15 +384,14 @@ h2 {
   width: 2.6rem;
   height: 2.6rem;
   border-radius: 50%;
-  border: 1px solid var(--burgundy);
-  color: var(--burgundy);
-  font-family: var(--serif);
-  font-size: 1.2rem;
+  border: 1px solid var(--hairline);
+  color: var(--text);
+  font-size: 1.25rem;
   margin-bottom: 0.9rem;
 }
 
-.steps h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
-.steps p { font-size: 0.9rem; color: var(--muted); }
+.steps h3 { font-size: 1.25rem; font-style: italic; margin-bottom: 0.4rem; }
+.steps p { font-size: 1rem; color: var(--muted); }
 
 /* ---------- Contact ---------- */
 .contact-links {
@@ -366,17 +408,17 @@ h2 {
   align-items: center;
   gap: 0.5rem;
   padding: 2.5rem 1.25rem;
-  border-top: 1px solid rgba(140, 132, 128, 0.18);
+  border-top: 1px solid var(--hairline);
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   letter-spacing: 0.05em;
   text-align: center;
 }
 
 .brand-mark {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  letter-spacing: 0.35em;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.38em;
   color: var(--text);
 }
 
@@ -387,18 +429,14 @@ h2 {
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: rgba(26, 26, 26, 0.92);
+  background: rgba(38, 34, 32, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
 }
 
-.lightbox img {
-  max-height: 88vh;
-  max-width: 100%;
-  border-radius: 4px;
-}
+.lightbox img { max-height: 88vh; max-width: 100%; }
 
 .lightbox-close {
   position: absolute;
@@ -423,15 +461,20 @@ h2 {
     left: 0;
     right: 0;
     background: var(--bg);
-    border-bottom: 1px solid rgba(140, 132, 128, 0.18);
+    border-bottom: 1px solid var(--hairline);
     padding: 1rem 1.25rem 1.5rem;
   }
 
   .site-nav.open { display: flex; flex-direction: column; gap: 1rem; }
   .site-nav a { margin: 0; }
 
-  .hero { min-height: 74vh; }
-  .hero-logo { width: 150px; height: 150px; }
+  .hero { min-height: 78vh; }
   h2 { font-size: 1.6rem; }
   .section { padding: 3.5rem 1.25rem; }
+}
+
+/* Respect reduced-motion: hide the video, keep the pale backdrop */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-video { display: none; }
 }

@@ -10,7 +10,7 @@ const WHATSAPP_NUMBER = "";
 if (WHATSAPP_NUMBER) {
   document.querySelectorAll(".pedir").forEach((link) => {
     const modelo = link.dataset.modelo || "";
-    const text = encodeURIComponent(`Hola! Me interesa el Choquer ${modelo}`);
+    const text = encodeURIComponent(`Hola! Me interesa el Choker ${modelo}`);
     link.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
   });
   const cta = document.querySelector(".whatsapp-cta");

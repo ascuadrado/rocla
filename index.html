@@ -17,7 +17,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -40,9 +40,15 @@
 
   <!-- ============ Hero ============ -->
   <section class="hero" id="inicio">
-    <img class="hero-logo" src="images/logo-circle.png" alt="ROCLA Collection — logotipo">
-    <p class="hero-tagline">Un look sencillo, con el complemento adecuado,<br>lo cambia&nbsp;todo.</p>
-    <p class="hero-sub">Complementos hechos a mano</p>
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="images/video-poster.jpg" aria-hidden="true">
+      <source src="images/video.mp4" type="video/mp4">
+      <source src="images/video.webm" type="video/webm">
+    </video>
+    <div class="hero-veil" aria-hidden="true"></div>
+    <h1 class="hero-wordmark">ROCLA</h1>
+    <hr class="hero-rule">
+    <p class="hero-tagline">Un look sencillo, con el complemento adecuado, lo cambia&nbsp;todo.</p>
+    <p class="hero-sub">Diseños hechos a mano</p>
     <a class="btn" href="coleccion.html">Ver la colección</a>
   </section>
 
@@ -55,17 +61,17 @@
       <button class="carousel-arrow prev" id="carouselPrev" aria-label="Anterior">&#8249;</button>
       <div class="carousel-track" id="carouselTrack">
         <a class="slide" href="coleccion.html#organza">
-          <img src="images/organza-gris.svg" alt="Línea Organza — chokers de organza con apliques bordados" loading="lazy">
+          <img src="images/products/organza-gris-1.jpg" alt="Línea Organza — choker de organza gris con aplique floral bordado, puesto" loading="lazy">
           <h3>Organza</h3>
           <p class="slide-price">20,99&nbsp;€</p>
         </a>
         <a class="slide" href="coleccion.html#terciopelo">
-          <img src="images/terciopelo-negro.svg" alt="Línea Terciopelo — chokers de terciopelo" loading="lazy">
+          <img src="images/products/terciopelo-azul-1.jpg" alt="Línea Terciopelo — choker de terciopelo azul con detalle plateado, puesto" loading="lazy">
           <h3>Terciopelo</h3>
           <p class="slide-price">20,99&nbsp;€</p>
         </a>
         <a class="slide" href="coleccion.html#flores">
-          <img src="images/flor-roja.svg" alt="Línea Flores — chokers con flores de tela hechas a mano" loading="lazy">
+          <img src="images/products/flor-rosa-1.jpg" alt="Línea Flores — choker con flor de tela rosa y cinta larga, puesto" loading="lazy">
           <h3>Flores</h3>
           <p class="slide-price">23,99&nbsp;€</p>
         </a>
@@ -93,18 +99,18 @@
     <ol class="steps">
       <li>
         <span class="step-num">1</span>
-        <h3>Elige tu modelo</h3>
-        <p>Echa un vistazo a la colección y encuentra tu choquer.</p>
+        <h3>Elige tu choker</h3>
+        <p>Echa un vistazo a la colección y encuentra el tuyo.</p>
       </li>
       <li>
         <span class="step-num">2</span>
-        <h3>Escríbenos</h3>
-        <p>Por Instagram o WhatsApp, como prefieras.</p>
+        <h3>Escríbenos por DM</h3>
+        <p>Indícanos qué producto quieres, tu nombre completo y la dirección a la que mandarlo.</p>
       </li>
       <li>
         <span class="step-num">3</span>
-        <h3>Lo hacemos a mano para ti</h3>
-        <p>Cada pieza se hace con mimo. Envío 3,99&nbsp;€ a toda España.</p>
+        <h3>Te lo enviamos</h3>
+        <p>Hecho a mano para ti. Los pedidos se envían por Correos y tardan de 3 a 5 días laborables. Envío 3,99&nbsp;€.</p>
       </li>
     </ol>
   </section>
@@ -112,7 +118,7 @@
   <!-- ============ Contacto ============ -->
   <section class="section section-alt" id="contacto">
     <h2>Contacto</h2>
-    <p class="section-intro">Los pedidos se hacen por mensaje directo. Escríbenos, respondemos rápido.</p>
+    <p class="section-intro">Los pedidos se encargan por DM. Escríbenos, respondemos rápido.</p>
     <div class="contact-links">
       <a class="btn" href="https://instagram.com/roclacollection" target="_blank" rel="noopener">Síguenos en Instagram</a>
       <a class="btn btn-outline whatsapp-cta" href="https://ig.me/m/roclacollection" target="_blank" rel="noopener">Escríbenos</a>
