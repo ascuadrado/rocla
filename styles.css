@@ -16,6 +16,9 @@
 
 html { scroll-behavior: smooth; }
 
+/* anchor targets land below the sticky header */
+[id] { scroll-margin-top: 84px; }
+
 body {
   font-family: var(--serif);
   font-weight: 400;
@@ -421,6 +424,23 @@ h2::after {
   letter-spacing: 0.38em;
   color: var(--text);
 }
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0.4rem 0 0.6rem;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover, .footer-links a:focus { color: var(--wine); }
 
 /* ---------- Lightbox ---------- */
 .lightbox[hidden] { display: none; }

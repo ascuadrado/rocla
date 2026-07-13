@@ -13,11 +13,10 @@ if (WHATSAPP_NUMBER) {
     const text = encodeURIComponent(`Hola! Me interesa el Choker ${modelo}`);
     link.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
   });
-  const cta = document.querySelector(".whatsapp-cta");
-  if (cta) {
+  document.querySelectorAll(".whatsapp-cta").forEach((cta) => {
     cta.href = `https://wa.me/${WHATSAPP_NUMBER}`;
     cta.textContent = "Escríbenos por WhatsApp";
-  }
+  });
 }
 
 /* Menú móvil */
@@ -31,6 +30,14 @@ navToggle.addEventListener("click", () => {
 
 nav.addEventListener("click", (e) => {
   if (e.target.tagName === "A") {
+    nav.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  }
+});
+
+/* cerrar el menú al tocar fuera */
+document.addEventListener("click", (e) => {
+  if (nav.classList.contains("open") && !nav.contains(e.target) && !navToggle.contains(e.target)) {
     nav.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
   }
