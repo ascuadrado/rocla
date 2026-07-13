@@ -218,6 +218,96 @@ h2 {
   margin-top: 2.5rem;
 }
 
+/* ---------- Carousel (portada) ---------- */
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex: 1;
+}
+
+.carousel-track::-webkit-scrollbar { display: none; }
+
+.slide {
+  flex: 0 0 min(78%, 320px);
+  scroll-snap-align: center;
+  text-decoration: none;
+  color: var(--text);
+  text-align: center;
+}
+
+.slide img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: transform 0.4s ease;
+}
+
+.slide:hover img, .slide:focus img { transform: scale(1.03); }
+
+.slide h3 {
+  font-size: 1.3rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.slide-price { color: var(--muted); font-size: 0.9rem; }
+
+.carousel-arrow {
+  flex: 0 0 auto;
+  background: none;
+  border: 1px solid var(--burgundy);
+  color: var(--burgundy);
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.carousel-arrow:hover, .carousel-arrow:focus { background: var(--burgundy); color: #fff; }
+
+/* ---------- Collection page ---------- */
+.page-head { padding-bottom: 0.5rem; }
+
+.page-title {
+  font-size: 2.2rem;
+  text-align: center;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.linea { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+
+.linea h2 { font-size: 1.5rem; }
+
+.price { color: var(--text); font-weight: 400; margin-bottom: 0.75rem; }
+
+.text-link {
+  color: var(--burgundy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--burgundy);
+  padding-bottom: 1px;
+}
+
+.text-link:hover, .text-link:focus { color: var(--burgundy-dark); border-color: var(--burgundy-dark); }
+
 /* ---------- Nosotras ---------- */
 .nosotras-inner {
   max-width: 560px;

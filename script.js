@@ -36,35 +36,49 @@ nav.addEventListener("click", (e) => {
   }
 });
 
-/* Lightbox */
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
-const lightboxClose = document.getElementById("lightboxClose");
-
-document.querySelectorAll("[data-lightbox]").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const img = btn.querySelector("img");
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-    lightbox.hidden = false;
-    document.body.style.overflow = "hidden";
-    lightboxClose.focus();
+/* Carrusel (portada) */
+const track = document.getElementById("carouselTrack");
+if (track) {
+  const step = () => track.querySelector(".slide").offsetWidth + 20;
+  document.getElementById("carouselPrev").addEventListener("click", () => {
+    track.scrollBy({ left: -step(), behavior: "smooth" });
   });
-});
-
-function closeLightbox() {
-  lightbox.hidden = true;
-  lightboxImg.src = "";
-  document.body.style.overflow = "";
+  document.getElementById("carouselNext").addEventListener("click", () => {
+    track.scrollBy({ left: step(), behavior: "smooth" });
+  });
 }
 
-lightboxClose.addEventListener("click", closeLightbox);
-lightbox.addEventListener("click", (e) => {
-  if (e.target === lightbox) closeLightbox();
-});
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
-});
+/* Lightbox (colección) */
+const lightbox = document.getElementById("lightbox");
+if (lightbox) {
+  const lightboxImg = document.getElementById("lightboxImg");
+  const lightboxClose = document.getElementById("lightboxClose");
+
+  document.querySelectorAll("[data-lightbox]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const img = btn.querySelector("img");
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.hidden = false;
+      document.body.style.overflow = "hidden";
+      lightboxClose.focus();
+    });
+  });
+
+  const closeLightbox = () => {
+    lightbox.hidden = true;
+    lightboxImg.src = "";
+    document.body.style.overflow = "";
+  };
+
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
+  });
+}
 
 /* Año del footer */
 document.getElementById("year").textContent = new Date().getFullYear();
