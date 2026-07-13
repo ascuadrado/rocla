@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f5efe8"/><stop offset="1" stop-color="#ece4da"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2b2b2b"/><stop offset="0.5" stop-color="#5a5a5a"/><stop offset="1" stop-color="#2b2b2b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <g opacity="0.9">
+    <path d="M 120 470 Q 400 430 680 470 L 680 530 Q 400 570 120 530 Z" fill="url(#band)"/>
+    <circle cx="400" cy="500" r="26" fill="#5a5a5a" opacity="0.85"/>
+    <circle cx="360" cy="505" r="14" fill="#5a5a5a" opacity="0.6"/>
+    <circle cx="440" cy="505" r="14" fill="#5a5a5a" opacity="0.6"/>
+  </g>
+  <text x="400" y="850" text-anchor="middle" font-family="Georgia, serif" font-size="34" letter-spacing="4" fill="#8c8480">CHOQUER ENCAJE NEGRO</text>
+  <text x="400" y="895" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#b0a8a2">foto pendiente</text>
+</svg>
